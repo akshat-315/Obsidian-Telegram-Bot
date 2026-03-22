@@ -3,3 +3,5 @@ uvicorn
 octokit
 python-telegram-bot
 pydantic-settings
+PyJWT[crypto]
+requests
