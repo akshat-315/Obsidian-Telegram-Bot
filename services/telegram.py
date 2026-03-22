@@ -3,6 +3,7 @@ from telegram.ext import Application, MessageHandler, ContextTypes
 import logging
 
 from config import settings
+from services.obsidian import parse_message
 
 logger = logging.getLogger("obsidian_workflow_bot.services.telegram")
 
@@ -10,6 +11,8 @@ _app: Application | None = None
 
 async def handleTelegramMessage(update: Update, context: ContextTypes.DEFAULT_TYPE):
     logger.info(f"Received message: {update}")
+    note_data =parse_message(update.message.text)
+    logger.info(f"Parsed message into note data: {note_data}")
     await update.message.reply_text("Hello! This is a response from the Obsidian Workflow Bot.")
 
 async def start_bot():
