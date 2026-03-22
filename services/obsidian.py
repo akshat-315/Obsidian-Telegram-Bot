@@ -4,10 +4,11 @@ from datetime import date
 from typing import Optional
 from pydantic import BaseModel
 from services.github import get_installation_token, create_file
+from config import settings
 
 logger = logging.getLogger("obsidian_workflow_bot")
 
-FLEETING_DIR = "00 - Fleeting"
+FLEETING_DIR = settings.FLEETING_DIR
 
 
 class ObsidianFleetingTemplate(BaseModel):

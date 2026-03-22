@@ -7,7 +7,7 @@ from config import settings
 
 logger = logging.getLogger("obsidian_workflow_bot")
 
-VAULT_REPO = "akshat-315/Obsidian-Vault"
+VAULT_REPO = settings.VAULT_REPO
 
 
 def _generate_jwt() -> str:
