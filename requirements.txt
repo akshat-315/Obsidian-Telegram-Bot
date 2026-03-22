@@ -2,3 +2,4 @@ fastapi
 uvicorn
 octokit
 python-telegram-bot
+pydantic-settings
