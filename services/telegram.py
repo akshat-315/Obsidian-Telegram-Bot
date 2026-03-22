@@ -1,17 +1,24 @@
-from telegram.ext import Application 
+from telegram import Update
+from telegram.ext import Application, MessageHandler, ContextTypes
 import logging
 
 from config import settings
 
 logger = logging.getLogger("obsidian_workflow_bot.services.telegram")
 
-_app = Application | None = None
+_app: Application | None = None
+
+async def handleTelegramMessage(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    logger.info(f"Received message: {update}")
+    await update.message.reply_text("Hello! This is a response from the Obsidian Workflow Bot.")
 
 async def start_bot():
     telegram_api_key = settings.TELEGRAM_API_KEY
 
     global _app
     _app = Application.builder().token(telegram_api_key).build()
+
+    _app.add_handler(MessageHandler(filters=None, callback=handleTelegramMessage))
     
     try:
         await _app.initialize()
